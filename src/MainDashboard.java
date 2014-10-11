@@ -13,10 +13,20 @@ public class MainDashboard extends JApplet{
 
 		  private JTextField txt = new JTextField(20);
 		  private JButton button = new JButton("Search");
+		  JTextArea areaMeaning= new JTextArea();
+		  
+		  JTextArea areaSysnonys= new JTextArea();
+		  JTextArea areaWiki= new JTextArea();
 
 		  public void init() {
-		    for (int i = 0; i < tabmenu.length; i++)
-		      tabs.addTab(tabmenu[i], new JTextArea());
+//		    for (int i = 0; i < tabmenu.length; i++)
+//		      tabs.addTab(tabmenu[i], new JTextArea());
+			  areaMeaning.setEditable(false);  
+			  areaSysnonys.setEditable(false);  
+			  areaWiki.setEditable(false);  
+		    tabs.addTab("Meaning",areaMeaning);
+		    tabs.addTab("Sysnonys",areaSysnonys);
+		    tabs.addTab("Wiki",areaWiki);
 		    tabs.addChangeListener(new ChangeListener() {
 		      public void stateChanged(ChangeEvent e) {
 //		        txt.setText("Tab selected: " + tabs.getSelectedIndex());
@@ -74,16 +84,20 @@ public class MainDashboard extends JApplet{
 //		    cp.add(tabs);
 		  }
 		  public static void main(String[] args) {
-			    run(new MainDashboard(), 350, 200);
+			    run(new MainDashboard(), 800, 800);
 			  }
 
 		  public static void run(JApplet applet, int width, int height) {
 			    JFrame frame = new JFrame();
 			    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			    
 			    frame.getContentPane().add(applet);
+			    frame.pack();
 			    frame.setSize(800, 800);
+			
 			    applet.init();
 			    applet.start();
 			    frame.setVisible(true);
+			    frame.setResizable(false);
 			  }
 }
